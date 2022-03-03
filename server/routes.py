@@ -173,7 +173,7 @@ def get_teacher(id):
 @app.route("/teachers/<int:id>/class")
 @jwt_required()
 def get_teacher_class(id):
-    result =  db.session.query(Student.username, Student.password_hashed, Student.firstname, Student.lastname, Student.teacher_id).filter(Student.teacher_id == id)
+    result =  db.session.query(Student.id, Student.username, Student.password_hashed, Student.firstname, Student.lastname, Student.teacher_id).filter(Student.teacher_id == id)
     return students_schema.jsonify(result)
 
 # Create teacher route
